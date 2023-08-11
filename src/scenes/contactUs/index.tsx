@@ -3,12 +3,15 @@ import { SelectedPage } from "@/shared/types";
 import { motion } from "framer-motion";
 import ContactUsPageGraphic from "@/assets/ContactUsPageGraphic.png";
 import HText from "@/shared/HText";
+import { useState } from "react";
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 
 const ContactUs = ({ setSelectedPage }: Props) => {
+  const [contacted, setContacted] = useState(false);
+
   const inputStyles = `mb-5 w-full rounded-lg bg-primary-300
   px-5 py-3 placeholder-white`;
 
@@ -19,10 +22,12 @@ const ContactUs = ({ setSelectedPage }: Props) => {
   } = useForm();
 
   const onSubmit = async (e: any) => {
+    e.preventDefault();
     const isValid = await trigger();
     if (!isValid) {
-      e.preventDefault();
+      return;
     }
+    setContacted(true);
   };
 
   return (
@@ -65,8 +70,12 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               visible: { opacity: 1, y: 0 },
             }}
           >
+            {contacted? <div className="text-primary-500">
+                Thank you for contacting us. A member of our team will be in contact shortly.
+                </div>
+                :
             <form
-              target="_blank"
+              target=""
               onSubmit={onSubmit}
               action=""
               method="POST"
@@ -131,6 +140,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                 SUBMIT
               </button>
             </form>
+            }
           </motion.div>
 
           <motion.div
