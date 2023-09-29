@@ -1,32 +1,28 @@
-https://fitness-typescript-3hc.pages.dev/
+# Gym Homepage
+
+## Table of contents
+
+- [Overview](#overview)
+- [Technologies](#technologies)
+- [To Do](#to-do)
+- [Acknowledgments](#acknowledgments)
+
+## Overview
+
+SPA with contact form.
+
+## Technologies
+
+- React: 18.2.0
+- Typescript: 4.9.3
+- Tailwindcss: 3.2.4
 
 
-### description
-SPA with contact form
+## To Do
 
-
-### tags
-typescript
-
-
-### 3rd party libraries
-framer-motion (animation library)
-
-
-### react libraries
-react-anchor-link-smooth-scroll@1.0.12
--D @types/react-anchor-link-smooth-scroll@1.0.2
-
-heroicons/react (by tailwind group)
-
-types/node (for a path to replace @ with src)
-
-react-hook-form
-
-### build
-vite
-
-
-### css
-tailwind
-postcss
+## Acknowledgments
+- [Udemy: React 18 Tutorial and Projects Course](https://www.udemy.com/course/react-tutorial-and-projects-course/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Anchor Link Smooth Scroll](https://www.npmjs.com/package/react-anchor-link-smooth-scroll)
+- [Heroicons](https://heroicons.com/)
+- [React Hook Form](https://react-hook-form.com/)
