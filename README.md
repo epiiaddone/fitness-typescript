@@ -21,7 +21,7 @@ SPA with contact form.
 ## To Do
 
 ## Acknowledgments
-- [Udemy: React 18 Tutorial and Projects Course](https://www.udemy.com/course/react-tutorial-and-projects-course/)
+- [Build a Complete Typescript React Fitness Application for Beginners | Responsive](https://www.youtube.com/watch?v=I2NNxr3WPDo&ab_channel=EdRoh)
 - [Framer Motion](https://www.framer.com/motion/)
 - [React Anchor Link Smooth Scroll](https://www.npmjs.com/package/react-anchor-link-smooth-scroll)
 - [Heroicons](https://heroicons.com/)
