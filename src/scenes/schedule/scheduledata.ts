@@ -1,8 +1,7 @@
 import { ClassDay, ClassInstructor, ClassName, ClassTime, ScheduledClass } from "@/shared/types";
 
 
-
-const ScheduledClasses: Array<ScheduledClass> = [
+export const ScheduledClasses: Array<ScheduledClass> = [
     {
         name: ClassName.AbCore,
         day: ClassDay.Monday,
