@@ -1,4 +1,4 @@
-import { ClassDay, ScheduledClass, SelectedPage } from "@/shared/types";
+import { ClassDay, ClassTime, ScheduledClass, SelectedPage } from "@/shared/types";
 import { motion } from "framer-motion";
 import HText from "@/shared/HText";
 import { ScheduledClasses } from "./scheduledata";
@@ -11,6 +11,23 @@ type Props = {
 
 const Schedule = ({ setSelectedPage }: Props) => {
     const [selectedDay, setSelectedDay] = useState<ClassDay>(ClassDay.Monday);
+
+    const todaysMorningScheduledClasses =
+        ScheduledClasses.find((scheduledClass) => {
+            return scheduledClass.day === selectedDay && scheduledClass.time === ClassTime.Morning
+        });
+    const todaysLunchScheduledClasses =
+        ScheduledClasses.find((scheduledClass) => {
+            return scheduledClass.day === selectedDay && scheduledClass.time === ClassTime.Lunch
+        })
+    const todaysAfternoonScheduledClasses =
+        ScheduledClasses.find((scheduledClass) => {
+            return scheduledClass.day === selectedDay && scheduledClass.time === ClassTime.Afternoon
+        })
+    const todaysEveningScheduledClasses =
+        ScheduledClasses.find((scheduledClass) => {
+            return scheduledClass.day === selectedDay && scheduledClass.time === ClassTime.Evening
+        })
 
     const buttonClasses = `
                         capitalize
@@ -58,14 +75,45 @@ const Schedule = ({ setSelectedPage }: Props) => {
                     </div>
                 </motion.div>
                 <div className="my-5 w-72 flex flex-wrap justify-center gap-2 mx-auto">
-                    {Object.values(ClassDay).map((day: String) => (
+                    {Object.keys(ClassDay).map((day: string) => (
                         <button
-                            className={day === selectedDay ? buttonSelectedClasses : buttonClasses}
-                            onClick={() => setSelectedDay(ClassDay.Tuesday)}
-                        >{day.substring(0, 3)}</button>
+                            key={/* ts noImplicitAny  will throw error without this casting*/
+                                ClassDay[day as keyof typeof ClassDay]
+                            }
+                            className={ClassDay[day as keyof typeof ClassDay] === selectedDay ? buttonSelectedClasses : buttonClasses}
+                            onClick={() => {
+                                setSelectedDay(ClassDay[day as keyof typeof ClassDay])
+                            }}
+                        >{ClassDay[day as keyof typeof ClassDay].substring(0, 3)}
+                        </button>
                     ))}
                 </div>
                 <table className="my-5">
+                    <tr>
+                        <th>Time</th>
+                        <th>Class</th>
+                        <th>Instructor</th>
+                    </tr>
+                    <tr>
+                        <td>{ClassTime.Morning}</td>
+                        <td>{todaysMorningScheduledClasses?.name}</td>
+                        <td>{todaysMorningScheduledClasses?.instructor}</td>
+                    </tr>
+                    <tr>
+                        <td>{ClassTime.Lunch}</td>
+                        <td>{todaysLunchScheduledClasses?.name}</td>
+                        <td>{todaysLunchScheduledClasses?.instructor}</td>
+                    </tr>
+                    <tr>
+                        <td>{ClassTime.Afternoon}</td>
+                        <td>{todaysAfternoonScheduledClasses?.name}</td>
+                        <td>{todaysAfternoonScheduledClasses?.instructor}</td>
+                    </tr>
+                    <tr>
+                        <td>{ClassTime.Evening}</td>
+                        <td>{todaysEveningScheduledClasses?.name}</td>
+                        <td>{todaysEveningScheduledClasses?.instructor}</td>
+                    </tr>
                 </table>
             </motion.div>
         </section >
