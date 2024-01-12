@@ -53,6 +53,15 @@ const Schedule = ({ setSelectedPage }: Props) => {
                         cursor-pointer
                         `;
 
+    const tableCellClasses = `
+                            border
+                            border-primary-500
+                            text-center
+                            p-2
+                            w-32
+                            sm:w-40
+                            bg-gray-20`;
+
     return (
         <section id="schedule" className="w-full bg-primary-100 py-40" >
             <motion.div
@@ -88,32 +97,37 @@ const Schedule = ({ setSelectedPage }: Props) => {
                         </button>
                     ))}
                 </div>
-                <table className="my-5">
-                    <tr>
-                        <th>Time</th>
-                        <th>Class</th>
-                        <th>Instructor</th>
-                    </tr>
-                    <tr>
-                        <td>{ClassTime.Morning}</td>
-                        <td>{todaysMorningScheduledClasses?.name}</td>
-                        <td>{todaysMorningScheduledClasses?.instructor}</td>
-                    </tr>
-                    <tr>
-                        <td>{ClassTime.Lunch}</td>
-                        <td>{todaysLunchScheduledClasses?.name}</td>
-                        <td>{todaysLunchScheduledClasses?.instructor}</td>
-                    </tr>
-                    <tr>
-                        <td>{ClassTime.Afternoon}</td>
-                        <td>{todaysAfternoonScheduledClasses?.name}</td>
-                        <td>{todaysAfternoonScheduledClasses?.instructor}</td>
-                    </tr>
-                    <tr>
-                        <td>{ClassTime.Evening}</td>
-                        <td>{todaysEveningScheduledClasses?.name}</td>
-                        <td>{todaysEveningScheduledClasses?.instructor}</td>
-                    </tr>
+                <table className="mx-auto my-5 border-collapse border border-primary-500">
+                    <thead>
+                        <tr>
+                            <th className={tableCellClasses}>Time</th>
+                            <th className={tableCellClasses}>Class</th>
+                            <th className={tableCellClasses}>Instructor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td className={tableCellClasses}>{ClassTime.Morning}</td>
+                            <td className={tableCellClasses}>{todaysMorningScheduledClasses?.name}</td>
+                            <td className={tableCellClasses}>{todaysMorningScheduledClasses?.instructor}</td>
+                        </tr>
+                        <tr>
+                            <td className={tableCellClasses}>{ClassTime.Lunch}</td>
+                            <td className={tableCellClasses}>{todaysLunchScheduledClasses?.name}</td>
+                            <td className={tableCellClasses}>{todaysLunchScheduledClasses?.instructor}</td>
+                        </tr>
+                        <tr>
+                            <td className={tableCellClasses}>{ClassTime.Afternoon}</td>
+                            <td className={tableCellClasses}>{todaysAfternoonScheduledClasses?.name}</td>
+                            <td className={tableCellClasses}>{todaysAfternoonScheduledClasses?.instructor}</td>
+                        </tr>
+                        <tr>
+                            <td className={tableCellClasses}>{ClassTime.Evening}</td>
+                            <td className={tableCellClasses}>{todaysEveningScheduledClasses?.name}</td>
+                            <td className={tableCellClasses}>{todaysEveningScheduledClasses?.instructor}</td>
+                        </tr>
+                    </tbody>
+
                 </table>
             </motion.div>
         </section >
